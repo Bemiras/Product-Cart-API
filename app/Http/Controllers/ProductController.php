@@ -31,7 +31,8 @@ class ProductController extends Controller
             'price' => 'required'
         ]);
 
-        return Product::create($request->all());
+        $products = Product::create($request->all())->toJson(JSON_PRETTY_PRINT);
+        return response($products,200);
     }
 
     /**
