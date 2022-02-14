@@ -24,16 +24,16 @@ Route::post('/logout', [AuthController::class, 'logout']);
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
-/*
-Route::get('/products', [ProductController::class, 'index']) ->name('show.products');
 
-Route::get('/products/{id}', [ProductController::class, 'show']) ->name('show.product');
-*/
+Route::post('/products/{id}', [ProductController::class, 'destroy']);
+Route::get('/products/{id}', [ProductController::class, 'show']);
+
+
 
 //Routes for 1 Product catalog API
 //Add a new product
 Route::post('/products', [ProductController::class, 'store']);
 //Update product title and/or price
-Route::put('/products/{index}',[ProductController::class, 'update']);
+Route::put('/products/{id}',[ProductController::class, 'update']);
 //List all of the products
 Route::get('/products', [ProductController::class, 'index']);
