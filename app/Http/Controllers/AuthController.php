@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Testing\Fluent\Concerns\Has;
 
 class AuthController extends Controller
@@ -42,36 +43,42 @@ class AuthController extends Controller
     }
 
     public function login(Request $request) {
-        $fields = $request->validate([
+        $validator = Validator::make($request->all(),[
             'email' => 'required|string',
-            'password' => 'required|string'
+            'password' => 'required'
         ]);
 
-        // Check email
-        $user = User::where('email', $fields['email'])->first();
-
-        // Check password
-        if(!$user || !Hash::check($fields['password'], $user->password)){
-            return response([
-               'message' => 'Bad creds'
-            ], 401);
+        if($validator->fails()){
+            return response()->json([
+                'validation_errors' => $validator->messages(),
+            ]);
         }
+        else{
+            // Check email
+            $user = User::where('email', $request->email)->first();
 
-        $token = $user->createToken('myapptoken')->plainTextToken;
+            // Check password
+            if(!$user || !Hash::check($request->password, $user->password)){
+                return response()->json([
+                    'status'=>401,
+                    'message' => 'Invalid Credentials'
+                ]);
+            }
+            else{
+                $token = $user->createToken('myapptoken')->plainTextToken;
 
-        $respon = [
-            'status' => 'success',
-            'msg' => 'Login successfully',
-            'content' => [
-                'status_code' => 200,
-                'access_token' => $token,
-                'token_type' => 'Bearer',
-                'user_name' => $user->name,
-                'user_email' => $user->email,
-                'user_id' => $user->id,
-            ]
-        ];
-
-        return response()->json($respon,200);
+                return response()->json([
+                    'status' => 'success',
+                    'msg' => 'Login successfully',
+                    'content' => [
+                    'status_code' => 200,
+                    'access_token' => $token,
+                    'token_type' => 'Bearer',
+                    'user_name' => $user->name,
+                    'user_email' => $user->email,
+                    'user_id' => $user->id,
+                ]]);
+            }
+        }
     }
 }
