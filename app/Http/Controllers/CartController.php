@@ -54,7 +54,7 @@ class CartController extends Controller
         $productsList['product'] = DB::table('carts')
                         ->join('products', 'carts.idProduct', '=', 'products.id')
                         ->where('idCart',$idCart)
-                        ->select('products.title','products.price')
+                        ->select('products.title','products.price','products.quantity')
                         ->get();
 
         return [$productsList, $totalPrice];
