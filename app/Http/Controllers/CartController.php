@@ -24,6 +24,11 @@ class CartController extends Controller
         ]);
 
         $idUser = auth('sanctum')->user()->id;
+        $idProduct = $fields['idProduct'];
+
+        $quantity = DB::table('carts')
+            ->where('idCart',$idUser and  'idProduct',$idProduct)
+            ->count('idProduct');
 
         return Cart::create([
             'idCart' => $idUser,

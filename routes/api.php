@@ -8,7 +8,7 @@ use App\Http\Controllers\AuthController;
 //Public routes
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
-Route::post('/logout', [AuthController::class, 'logout']);
+
 
 //Protected routes
 Route::group(['middleware' => ['auth:sanctum']], function () {
