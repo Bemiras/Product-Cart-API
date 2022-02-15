@@ -33,7 +33,7 @@ class CartController extends Controller
         return Cart::create([
             'idCart' => $idUser,
             'idProduct' => $fields['idProduct'],
-            'quantity' => $quantity++
+            'quantity' => $quantity+1
         ]);
     }
 
