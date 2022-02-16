@@ -4,10 +4,15 @@
 <a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 <a href="https:github.com/bemiras"><img src="https://img.shields.io/badge/author-Bemiras-blue" alt="Author"></a>
+<a href="https://product-cart-api.herokuapp.com/api/products"><img src="https://img.shields.io/badge/website-CHECK-green" alt="Website" ></a>
+
 </p>
 
 
 This project was built as a simple backend task, in PHP as a recruitment job.
+
+Check: 
+https://product-cart-api.herokuapp.com/api/products
 
 ## Task Requiremnts:
 ###1. Product catalog API:

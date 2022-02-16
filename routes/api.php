@@ -9,6 +9,9 @@ use App\Http\Controllers\AuthController;
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
 
+//List all of the products
+Route::get('/products', [ProductController::class, 'productList']);
+
 
 //Protected routes
 Route::group(['middleware' => ['auth:sanctum']], function () {
@@ -19,8 +22,6 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::post('/products', [ProductController::class, 'storeProduct']);
     //Update product title and/or price
     Route::put('/products/{id}',[ProductController::class, 'updateProduct']);
-    //List all of the products
-    Route::get('/products', [ProductController::class, 'productList']);
 
 //Routes for 2 Cart API
     //Add a product to the cart
