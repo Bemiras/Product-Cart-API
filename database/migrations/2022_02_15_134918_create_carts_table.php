@@ -18,6 +18,7 @@ class CreateCartsTable extends Migration
             $table->unsignedBigInteger('idCart');
             $table->unsignedBigInteger('idProduct');
             $table->integer('quantity');
+            $table->decimal('total',10,2);
             $table->timestamps();
 
             $table->foreign('idProduct')
