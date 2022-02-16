@@ -15,9 +15,9 @@ Check:
 https://product-cart-api.herokuapp.com/api/products
 
 ## Task Requiremnts:
-###1. Product catalog API:
-<div style="float: left; margin: 0 10vw">
-    Catalog contains following products:
+### 1. Product catalog API:
+#### Catalog contains following products:
+<div>
     <table>
         <tr>
           <th>ID</th>
@@ -51,22 +51,21 @@ https://product-cart-api.herokuapp.com/api/products
         </tr>
     </table>
     </div>
-    <div>
-        <br><p>The API should expose methods to:</p>
-          <li>Add a new product</li>
-          <li>Update a product title and/or price</li>
-          <li>List all of the products</li>
-    </div>
-    <div style="clear: both"></div>
+    
+#### The API should expose methods to:
+- Add a new product
+- Update a product title and/or price
+- List all of the products
+   
 
-###2. Cart API
-<br><p>This API allow adding products to the cart and  should expose methods to:</p>
+### 2. Cart API
+#### This API allow adding products to the cart and  should expose methods to:</p>
 - Add a product to the cart
 - List all the products in the cart
 
 
 
-##Assumptions 
+## Assumptions 
 - The Users Can signUp Or login using his email addresses and passwords, users will be given an access_token upon signin in.
 - The logged  user can create, update product.
 - The Product and Cart data is persisted to the database.
@@ -74,7 +73,7 @@ https://product-cart-api.herokuapp.com/api/products
 
 
 
-##Language, Framework, and Datastore.
+## Language, Framework, and Datastore.
 - This System is implemented using php laravel framework
 - Mysql is ised as a Database for this application (DB_NAME = "Shop")
 - The Cart and Products data is persisted in the Database to be in-compliance with the RESTfulness Guidelines and best practices and avoid using the sessions to save the state of the user
@@ -93,7 +92,7 @@ https://product-cart-api.herokuapp.com/api/products
 - PUT /api/products/{id}
 - GET /api/products
 
-####2) Cart
+#### 2) Cart
 - POST /api/cart
 - GET /api/cart/{id}
 
